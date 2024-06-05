@@ -13,7 +13,13 @@ class ContatosController extends Controller
         return view("contatos.index")->with('contatos', $contato);
     }
 
+    public function create(){
+        return view('contatos.create');
+    }
+
     public function store(Request $request){
+        contato::create($request->all());
+        // dd($request->all());
         return to_route("contatos.index");
     }
 }
