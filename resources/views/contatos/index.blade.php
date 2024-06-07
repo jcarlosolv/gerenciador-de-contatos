@@ -1,19 +1,17 @@
 <x-layout>
-    <main>
-        <section>
+        <section class="menu">
             <a href="{{route('contatos.create')}}">ADICIONAR</a>
         </section>
         <section class="lista-contatos">
             <ul>
                 @foreach($contatos as $contato)
-                <li>
-                    <a href="{{route('contatos.edit', $contato->id)}}">
-                        <span>{{$contato->nome}}</span><br>
-                        <span>{{$contato->telefone}}</span>
-                    </a>
-                </li>
+                <a href="{{route('contatos.edit', $contato->id)}}">
+                    <li>
+                        <span class="nome">{{$contato->nome}}</span>
+                        <span class="telefone">{{$contato->telefone}}</span>
+                    </li>
+                </a>
                 @endforeach
             </ul>
         </section>
-    </main>
 </x-layout>

@@ -8,7 +8,7 @@ use App\Models\contato;
 class ContatosController extends Controller
 {
     public function index() {
-        $contato = contato::all();
+        $contato = contato::query()->orderBy("nome", "asc")->get();
         // dd($contato);
         return view("contatos.index")->with('contatos', $contato);
     }
@@ -22,4 +22,14 @@ class ContatosController extends Controller
         // dd($request->all());
         return to_route("contatos.index");
     }
+
+    public function edit(contato $contato){
+        return view("contatos.edit")->with("contato", $contato);
+    }
+
+    public function update(Request $request,contato $contato){
+        $contato->update($request->all());
+        return to_route("contatos.index");
+    }
+
 }
